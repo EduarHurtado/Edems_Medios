@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edems Medios | Narrativa Visual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --gold: #D4AF37;
+            --accent: #ff3366; /* El punto rojo/fucsia del logo */
+        }
+        body { background-color: var(--bg-deep); color: #ffffff; font-family: 'Inter', sans-serif; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        
+        .glass-nav { backdrop-filter: blur(15px); background: rgba(0,0,0,0.7); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        
+        /* Efectos visuales */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Lightbox */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+        #lightbox img { max-width: 90%; max-height: 90%; box-shadow: 0 0 50px rgba(212, 175, 55, 0.2); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full top-0 z-50 glass-nav p-6 flex justify-between items-center transition-all">
+        <div class="text-3xl font-black tracking-tighter cursor-pointer">EDEMS<span style="color: var(--accent);">.</span></div>
+        <nav>
+            <ul class="flex gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
+                <li><a href="#inicio" class="hover:text-gold transition-colors">Inicio</a></li>
+                <li><a href="#nosotros" class="hover:text-gold transition-colors">Nosotros</a></li>
+                <li><a href="#radar" class="hover:text-gold transition-colors">Portafolio</a></li>
+                <li><a href="#contacto" class="hover:text-gold transition-colors">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <h1 class="text-[clamp(4rem,15vw,10rem)] font-black leading-[0.8] tracking-tighter reveal active">
+            EDEMS<span style="color: var(--accent);">.</span>
+        </h1>
+        <p class="mt-10 text-xl md:text-2xl font-light text-gray-300 max-w-xl tracking-[0.2em] uppercase reveal active" style="transition-delay: 0.2s;">
+            No contamos historias.<br>Revelamos mundos que esperan ser vistos.
+        </p>
+    </section>
+
+    <section id="nosotros" class="py-32 px-6 max-w-4xl mx-auto reveal">
+        <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-gold mb-8 text-center">Nuestra Filosofía</h2>
+        <p class="text-3xl md:text-5xl font-light italic leading-tight text-center">
+            "Redefinimos la percepción visual. Somos la unión entre la técnica impecable y la sensibilidad artística más profunda."
+        </p>
+    </section>
+
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="reveal border-t border-white/10 pt-8" style="transition-delay: 0.1s;">
+                <h3 class="text-xl font-bold text-gold mb-4">Fotografía Editorial</h3>
+                <p class="text-gray-400 leading-relaxed">Capturamos instantes que trascienden. Retratos y reportajes con alma, diseñados para impactar y perdurar en el tiempo.</p>
+            </div>
+            <div class="reveal border-t border-white/10 pt-8" style="transition-delay: 0.2s;">
+                <h3 class="text-xl font-bold text-gold mb-4">Producción de Video</h3>
+                <p class="text-gray-400 leading-relaxed">Creamos piezas audiovisuales inmersivas. Dinamismo, ritmo y una edición precisa para marcas que exigen distinción.</p>
+            </div>
+            <div class="reveal border-t border-white/10 pt-8" style="transition-delay: 0.3s;">
+                <h3 class="text-xl font-bold text-gold mb-4">Curaduría Visual</h3>
+                <p class="text-gray-400 leading-relaxed">Transformamos visiones en conceptos coherentes. Estrategia y estética trabajando juntas para elevar tu narrativa al siguiente nivel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="radar" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-20 reveal">
+            <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-gold mb-4">Selección Editorial</h2>
+            <h3 class="text-5xl md:text-7xl font-bold tracking-tighter">En el Radar</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+           <!-- Proyecto 1 -->
+            <article class="md:col-span-8 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto1.jpg')">
+                <div class="relative h-[60vh] overflow-hidden">
+                    <img loading="lazy" src="foto1.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 2 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto2.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto2.jpg" alt="Proyecto 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+             <!-- Proyecto 3 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto3.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto3.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 4 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto4.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto4.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+             <!-- Proyecto 5 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto5.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto5.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+             <!-- Proyecto 6 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto6.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto6.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+             <!-- Proyecto 7 -->
+            <article class="md:col-span-8 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto7.jpg')">
+                <div class="relative h-[60vh] overflow-hidden">
+                    <img loading="lazy" src="foto7.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 8 -->
+            <article class="md:col-span-8 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto8.jpg')">
+                <div class="relative h-[60vh] overflow-hidden">
+                    <img loading="lazy" src="foto8.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 9 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto9.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto9.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 10 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto10.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto10.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 11 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto11.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto11.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 12 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto12.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto12.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 13 -->
+            <article class="md:col-span-8 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto13.jpg')">
+                <div class="relative h-[60vh] overflow-hidden">
+                    <img loading="lazy" src="foto13.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 14 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto14.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto14.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 15 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto15.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto15.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 16 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto16.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto16.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 17 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto17.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto17.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 18 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto18.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto18.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 19 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto19.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto19.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 20 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto20.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto20.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+
+            <!-- Proyecto 21 -->
+            <article class="md:col-span-4 group cursor-pointer overflow-hidden border border-white/5 hover:border-gold transition-colors duration-500 reveal" onclick="openLightbox('foto21.jpg')">
+                <div class="relative h-[40vh] md:h-[60vh] overflow-hidden bg-zinc-900">
+                    <img loading="lazy" src="foto21.jpg" alt="Proyecto 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer id="contacto" class="py-32 px-6 border-t border-white/5 text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-xs font-bold uppercase tracking-[0.4em] text-gold mb-8">Contacto</h2>
+            
+            <a href="mailto:edemsphotos@gmail.com" class="text-lg md:text-xl font-light hover:text-gold transition-all duration-300 tracking-wider">edemsphotos@gmail.com</a>
+            
+            <div class="flex justify-center gap-8 mt-12">
+                <a href="https://www.instagram.com/edems_medios" target="_blank" class="hover:text-gold transition-colors text-white">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4.004 4.004 0 1 1 0-8.008 4.004 4.004 0 0 1 0 8.008zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="https://x.com/edems_medios" target="_blank" class="hover:text-gold transition-colors text-white">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Vista previa">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
